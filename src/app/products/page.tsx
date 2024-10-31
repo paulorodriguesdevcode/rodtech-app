@@ -24,7 +24,7 @@ export default function Page() {
   const closeModal = () => setModalOpen(false);
 
   const calculateTotals = (products: Product[]) => {
-    return products.reduce(
+    return products?.reduce(
       (acc, product) => {
         acc.totalProfit += product.quantity * (product.saleValue || 0);
         acc.totalQuantity += product.quantity;

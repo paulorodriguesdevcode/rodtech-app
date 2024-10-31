@@ -79,44 +79,46 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, isLoading, updateOrde
             </tr>
           </thead>
           <tbody className='capitalize align-top'>
-            {orders.map((order, index) => (
-              <tr key={index} className={index % 2 ? " dark:bg-indigo-950" : ""}>
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal">{order.product?.name}</p>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal">{order.product?.type}</p>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal">{order.customer?.name}</p>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal">{order.quantity}</p>
-                  </div>
-                </td>
-
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal">{formatToBRDate(order.createdAt)}</p>
-                  </div>
-                </td>
-                
-                <td className="py-3 px-5 border-b">
-                  <div className="flex space-x-2 justify-center">
-                    <button onClick={() => openConfirmationAlert(order?.id)} className="text-red-600 hover:text-red-900 focus:outline-none">
-                      <LucideDelete />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+            {orders.length ? (
+              orders.map((order:any, index) => (
+                <tr key={index} className={index % 2 ? " dark:bg-indigo-950" : ""}>
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{order.product?.name}</p>
+                    </div>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{order.product?.type}</p>
+                    </div>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{order.customer?.name}</p>
+                    </div>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{order.quantity}</p>
+                    </div>
+                  </td>
+  
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{formatToBRDate(order.createdAt)}</p>
+                    </div>
+                  </td>
+                  
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex space-x-2 justify-center">
+                      <button onClick={() => openConfirmationAlert(order?.id)} className="text-red-600 hover:text-red-900 focus:outline-none">
+                        <LucideDelete />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ):('')}
           </tbody>
         </table>
       </div>

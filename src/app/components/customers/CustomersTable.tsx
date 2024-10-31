@@ -80,60 +80,63 @@ const CustomersTable: React.FC<CustomersTableProps> = ({ customers, isLoading, u
             </tr>
           </thead>
           <tbody className='capitalize align-top'>
-            {customers.map((customer, index) => (
-              <tr key={index} className={index % 2 ? "dark:bg-indigo-950" : ""}>
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal ">{customer.name}</p>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <p className="block font-sans text-xs font-medium text-center">{customer.phone}</p>
-                </td>
-                
-                <td className="py-3 px-5 border-b">
-                  <div className="w-10/12">
-                    <p className="font-sans mb-1 block text-xs font-medium text-center lowercase">{customer.email}</p>
-                    <div className="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
-                      <div className="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white"></div>
+            {customers.length ? (
+              customers?.map((customer, index) => (
+                <tr key={index} className={index % 2 ? "dark:bg-indigo-950" : ""}>
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal ">{customer.name}</p>
                     </div>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <div className="w-10/12">
-                    <p className="font-sans mb-1 block text-xs font-medium text-center">{customer.city}</p>
-                    <div className="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
-                      <div className="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white"></div>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <p className="block font-sans text-xs font-medium text-center">{customer.phone}</p>
+                  </td>
+                  
+                  <td className="py-3 px-5 border-b">
+                    <div className="w-10/12">
+                      <p className="font-sans mb-1 block text-xs font-medium text-center lowercase">{customer.email}</p>
+                      <div className="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
+                        <div className="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white"></div>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <div className="w-10/12">
-                    <p className="font-sans mb-1 block text-xs font-medium text-center">{formatToBRDate(customer.createdAt)}</p>
-                    <div className="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
-                      <div className="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white"></div>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <div className="w-10/12">
+                      <p className="font-sans mb-1 block text-xs font-medium text-center">{customer.city}</p>
+                      <div className="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
+                        <div className="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white"></div>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b ">
-                  <div className="flex space-x-2 justify-center">
-                    <button onClick={() => openConfirmationAlert({
-                      title: "Confirmar exclusão",
-                      question: "Tem certeza que deseja excluir este cliente e todas as suas ordens de serviço?",
-                      classButtonConfirm: "CANCEL",
-                      classButtonCancel: "CONFIRM",
-                      confirmMethod: () => confirmDelete(customer.id)
-                    })}
-                      className="text-red-600 hover:text-red-900 focus:outline-none">
-                      <LucideDelete/>
-                    </button>
-                    <button onClick={() => openEditModal(customer.id)} className="text-indigo-600 hover:text-indigo-900 focus:outline-none">
-                      <LucideEdit/>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <div className="w-10/12">
+                      <p className="font-sans mb-1 block text-xs font-medium text-center">{formatToBRDate(customer.createdAt)}</p>
+                      <div className="flex flex-start bg-blue-gray-50 overflow-hidden w-full rounded-sm font-sans text-xs font-medium h-1">
+                        <div className="flex justify-center items-center h-full bg-gradient-to-tr from-blue-600 to-blue-400 text-white"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-3 px-5 border-b ">
+                    <div className="flex space-x-2 justify-center">
+                      <button onClick={() => openConfirmationAlert({
+                        title: "Confirmar exclusão",
+                        question: "Tem certeza que deseja excluir este cliente e todas as suas ordens de serviço?",
+                        classButtonConfirm: "CANCEL",
+                        classButtonCancel: "CONFIRM",
+                        confirmMethod: () => confirmDelete(customer.id)
+                      })}
+                        className="text-red-600 hover:text-red-900 focus:outline-none">
+                        <LucideDelete/>
+                      </button>
+                      <button onClick={() => openEditModal(customer.id)} className="text-indigo-600 hover:text-indigo-900 focus:outline-none">
+                        <LucideEdit/>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ):('')}
+            
           </tbody>
         </table>
         {modalOpen && (

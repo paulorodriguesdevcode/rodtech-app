@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 
 export async function exportCustomersToExcel(customers: Customer[]) {
     try {
-        const data = customers.map(customer => ({
+        const data = customers?.map(customer => ({
             Nome: customer.name,
             Email: customer.email,
             Telefone: customer.phone,

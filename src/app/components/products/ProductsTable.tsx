@@ -86,43 +86,45 @@ const ProductsTable: React.FC<ProductsTableProps> = ({ products, isLoading, upda
             </tr>
           </thead>
           <tbody className='capitalize align-top'>
-            {products.map((product, index) => (
-              <tr key={index} className={index % 2 ? " dark:bg-indigo-950" : ""}>
-                
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal">{product.name}</p>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal">{product.description}</p>
-                  </div>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <div className="flex items-center gap-4 justify-center">
-                    <p className="block font-sans text-sm leading-normal">{product.type}</p>
-                  </div>
-                </td>
-                <td
-                 className="py-3 px-5 border-b">
-                  <p className="block font-sans text-xs font-medium text-blue-gray-600 text-center">{product.quantity}</p>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <p className="font-sans mb-1 block text-xs font-medium text-blue-gray-600 text-center">{'R$ ' + product?.purchaseValue?.toFixed(2)}</p>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <p className="font-sans mb-1 block text-xs font-medium text-blue-gray-600 text-center">{'R$ ' + product.saleValue.toFixed(2)}</p>
-                </td>
-                <td className="py-3 px-5 border-b">
-                  <div className="flex space-x-2 justify-center">
-                    <button onClick={() => openConfirmationAlert(product.id)} className="text-red-600 hover:text-red-900 focus:outline-none">
-                      <LucideDelete />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+            {products.length ? (
+              products.map((product, index) => (
+                <tr key={index} className={index % 2 ? " dark:bg-indigo-950" : ""}>
+                  
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{product.name}</p>
+                    </div>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{product.description}</p>
+                    </div>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{product.type}</p>
+                    </div>
+                  </td>
+                  <td
+                   className="py-3 px-5 border-b">
+                    <p className="block font-sans text-xs font-medium text-blue-gray-600 text-center">{product.quantity}</p>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <p className="font-sans mb-1 block text-xs font-medium text-blue-gray-600 text-center">{'R$ ' + product?.purchaseValue?.toFixed(2)}</p>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <p className="font-sans mb-1 block text-xs font-medium text-blue-gray-600 text-center">{'R$ ' + product.saleValue.toFixed(2)}</p>
+                  </td>
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex space-x-2 justify-center">
+                      <button onClick={() => openConfirmationAlert(product.id)} className="text-red-600 hover:text-red-900 focus:outline-none">
+                        <LucideDelete />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ):('')}
           </tbody>
         </table>
 

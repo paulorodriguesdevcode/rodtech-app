@@ -81,7 +81,7 @@ export default function NewSaleModal({ isOpen, onClose, product, customers, upda
               required
             >
               <option value="" disabled>Selecione um cliente</option>
-              {customers.map(customer => (
+              {customers?.map(customer => (
                 <option value={customer.id} key={customer.id}>
                   {customer.name}
                 </option>
