@@ -54,39 +54,54 @@ export default function Page() {
   };
 
   return (
-    <div className='flex justify-center h-screen w-screen 
+    <div className="flex justify-center items-center h-screen w-screen 
         bg-gradient-to-r from-indigo-950 via-indigo-800 to-indigo-700 
-      dark:from-black dark:via-indigo-950 dark:to-indigo-900'>
-      <div className="flex items-center">
-        <div className="flex relative">
-          <div className="card bg-indigo-200 shadow-lg w-full h-full rounded-3xl absolute transform rotate-3 bg-gradient-to-r  dark:from-indigo-900 dark:via-indigo-950 dark:to-black border-transparent" />
-          <div className="relative w-full rounded-3xl px-12 py-10 bg-indigo-50 shadow-md bg-gradient-to-r  dark:from-black dark:via-indigo-950 dark:to-indigo-900">
-            <div className="flex justify-center mb-4">
-              
-            </div>
-            <form onSubmit={handleLogin} className="mt-10 grid gap-2 ">
-              <input type="email" required placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="focus:outline-indigo-200 text-center block w-full bg-indigo-50 h-11 rounded-xl shadow-lg hover:bg-indigo-100 focus:bg-indigo-100 focus:ring-0 pointer" />
-              <input type="password" required placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} className="focus:outline-indigo-200 text-center block w-full border-none bg-indigo-50 h-11 rounded-xl shadow-lg hover:bg-indigo-100 focus:bg-indigo-100 focus:ring-0" />
-              <button className="mt-4 bg-indigo-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105 bg-gradient-to-tr from-indigo-700 to-indigo-950" disabled={isLoading}>
-                {isLoading ? "Loading..." : "Login"}
-              </button>
-            </form>
-
-            {isLoading && (
-              <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50">
-                <ThreeDots
-                  height="80"
-                  width="80"
-                  radius="9"
-                  color="black"
-                  ariaLabel="three-dots-loading"
-                  visible={true}
-                />
-              </div>
-            )}
-          </div>
+        dark:from-black dark:via-indigo-950 dark:to-indigo-900">
+  <div className="flex items-center">
+    <div className="relative">
+      <div className="card bg-indigo-300 shadow-lg w-full h-full rounded-3xl absolute transform rotate-3 transition duration-500 ease-in-out bg-gradient-to-r dark:from-indigo-900 dark:via-indigo-950 dark:to-black border-transparent" />
+      <div className="relative w-full rounded-3xl px-12 py-10 bg-gradient-to-r from-white to-indigo-50 shadow-lg transition duration-300 ease-in-out dark:from-black dark:via-indigo-950 dark:to-indigo-900">
+        <div className="flex justify-center mb-4">
+          <h1 className="text-3xl font-bold text-indigo-900 dark:text-white">Bem-vindo à RodTech</h1>
         </div>
+        <form onSubmit={handleLogin} className="mt-10 grid gap-4">
+          <input 
+            type="email" 
+            required 
+            placeholder="Email" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            className="focus:outline-none text-center block w-full h-12 rounded-xl shadow-md hover:bg-indigo-100 focus:bg-indigo-200 focus:ring-2 focus:ring-indigo-500 transition duration-300 ease-in-out" 
+          />
+          <input 
+            type="password" 
+            required 
+            placeholder="Senha" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            className="focus:outline-none text-center block w-full h-12 rounded-xl shadow-md hover:bg-indigo-100 focus:bg-indigo-200 focus:ring-2 focus:ring-indigo-500 transition duration-300 ease-in-out" 
+          />
+          <button className="mt-4 bg-indigo-800 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-300 ease-in-out transform hover:scale-105 bg-gradient-to-tr from-indigo-700 to-indigo-950" disabled={isLoading}>
+            {isLoading ? "Carregando..." : "Login"}
+          </button>
+        </form>
+
+        {isLoading && (
+          <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 rounded-3xl">
+            <ThreeDots
+              height="80"
+              width="80"
+              radius="9"
+              color="white"
+              ariaLabel="three-dots-loading"
+              visible={true}
+            />
+          </div>
+        )}
       </div>
     </div>
+  </div>
+</div>
+
   );
 };

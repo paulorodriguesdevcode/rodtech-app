@@ -14,7 +14,7 @@ interface ProductsModalProps {
 export default function ProductsModal({ isOpen, onClose, updateProducts }: ProductsModalProps) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [type, setType] = useState("livro");
+  const [type, setType] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchaseValue, setPurchaseValue] = useState("");
   const [saleValue, setSaleValue] = useState("");
@@ -25,7 +25,7 @@ export default function ProductsModal({ isOpen, onClose, updateProducts }: Produ
   const resetModal = () => {
     setName("");
     setDescription("");
-    setType("livro");
+    setType("");
     setQuantity("");
     setPurchaseValue("");
     setSaleValue("");
@@ -104,9 +104,13 @@ export default function ProductsModal({ isOpen, onClose, updateProducts }: Produ
           <div className="mb-4">
             <label className="block text-indigo-950">Tipo</label>
             <select onChange={(e) => setType(e.target.value)} name="" id="" className="w-full px-4 py-2 border rounded-lg focus:outline-indigo-700">
-              <option value="livro">Livro</option>
-              <option value="acessorio">Acessório</option>
-              <option value="roupa">Roupa</option>
+              <option value="camisa">Camisa</option>
+              <option value="calça">Calça</option>
+              <option value="blusa">Blusa</option>
+              <option value="intima">Peça intima</option>
+              <option value="jaqueta">Jaqueta</option>
+              <option value="calçado">Calçado</option>
+              <option value="acessório">Acessório</option>
             </select>
           </div>
 
