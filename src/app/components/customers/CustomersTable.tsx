@@ -72,7 +72,7 @@ const CustomersTable: React.FC<CustomersTableProps> = ({ customers, isLoading, u
                 <p className="block font-sans text-indigo-gray-400 dark:text-white">Cidade</p>
               </th>
               <th className="border-b border-indigo-gray-50 dark:border-transparent py-3 px-6 text-center">
-                <p className="block font-sans text-indigo-gray-400 dark:text-white">data</p>
+                <p className="block font-sans text-indigo-gray-400 dark:text-white">Data</p>
               </th>
               <th className="border-b border-indigo-gray-50 dark:border-transparent py-3 px-6 text-center">
                 <p className="block font-sans text-indigo-gray-400 dark:text-white">Ações</p>
