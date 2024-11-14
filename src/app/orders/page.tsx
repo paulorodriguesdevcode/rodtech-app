@@ -40,7 +40,7 @@ export default function Page() {
     return orders?.reduce(
       (acc, order) => {
         acc.totalQuantity += order.quantity;
-        acc.totalValue += (order.totalValue || 0);
+        acc.totalValue += order?.totalValue || 0;
         return acc;
       },
       { totalQuantity: 0, totalValue: 0 }
@@ -56,7 +56,7 @@ export default function Page() {
           </div>
           <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-2">
             <Card isLoading={isLoading} title="Quantidade de produtos" value={(totals.totalQuantity.toString()).toString()} />
-            <Card isLoading={isLoading} title="Total em R$ vendido" value={totals.totalValue.toString() } />
+            <Card isLoading={isLoading} title="Total em R$ vendido" value={totals.totalValue.toString()} />
           </div>
           <div className='flex-wrap'>
             <OrdersTable orders={orders} isLoading={isLoading} updateOrders={() => fetchOrders()} />

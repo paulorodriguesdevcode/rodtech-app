@@ -56,8 +56,8 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, isLoading, updateOrde
     ) : (
       <div className="mt-10 flex flex-col bg-clip-border rounded-xl bg-indigo-50 shadow-md xl:col-span-2 overflow-y-auto scrollbar-thumb-indigo-500 dark:text-white dark:bg-black ">
         <table className="w-full h-full">
-        <thead className='bg-gradient-to-tr  dark:from-indigo-950 dark:to-indigo-700 from-indigo-700 to-indigo-500'>
-        <tr className='text-white text-[15px]'>
+          <thead className='bg-gradient-to-tr  dark:from-indigo-950 dark:to-indigo-700 from-indigo-700 to-indigo-500'>
+            <tr className='text-white text-[15px]'>
               <th className="border-b border-indigo-gray-50 dark:border-transparent py-3 px-6 text-center">
                 <p className="block font-sans text-indigo-gray-400 dark:text-white">Produto</p>
               </th>
@@ -71,6 +71,9 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, isLoading, updateOrde
                 <p className="block font-sans text-indigo-gray-400 dark:text-white">Quantidade</p>
               </th>
               <th className="border-b border-indigo-gray-50 dark:border-transparent py-3 px-6 text-center">
+                <p className="block font-sans text-indigo-gray-400 dark:text-white">Total da venda</p>
+              </th>
+              <th className="border-b border-indigo-gray-50 dark:border-transparent py-3 px-6 text-center">
                 <p className="block font-sans text-indigo-gray-400 dark:text-white">Data da venda</p>
               </th>
               <th className="border-b border-indigo-gray-50 dark:border-transparent py-3 px-6 text-center">
@@ -80,7 +83,7 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, isLoading, updateOrde
           </thead>
           <tbody className='capitalize align-top'>
             {orders.length ? (
-              orders.map((order:any, index) => (
+              orders.map((order: Order, index) => (
                 <tr key={index} className={index % 2 ? " dark:bg-indigo-950" : ""}>
                   <td className="py-3 px-5 border-b">
                     <div className="flex items-center gap-4 justify-center">
@@ -102,13 +105,18 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, isLoading, updateOrde
                       <p className="block font-sans text-sm leading-normal">{order.quantity}</p>
                     </div>
                   </td>
-  
+                  <td className="py-3 px-5 border-b">
+                    <div className="flex items-center gap-4 justify-center">
+                      <p className="block font-sans text-sm leading-normal">{order.totalValue}</p>
+                    </div>
+                  </td>
+
                   <td className="py-3 px-5 border-b">
                     <div className="flex items-center gap-4 justify-center">
                       <p className="block font-sans text-sm leading-normal">{formatToBRDate(order.createdAt)}</p>
                     </div>
                   </td>
-                  
+
                   <td className="py-3 px-5 border-b">
                     <div className="flex space-x-2 justify-center">
                       <button onClick={() => openConfirmationAlert(order?.id)} className="text-red-600 hover:text-red-900 focus:outline-none">
@@ -118,7 +126,7 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, isLoading, updateOrde
                   </td>
                 </tr>
               ))
-            ):('')}
+            ) : ('')}
           </tbody>
         </table>
       </div>
