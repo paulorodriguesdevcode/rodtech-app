@@ -8,7 +8,7 @@ export async function exportOrdersToExcel(orders: Order[]) {
             Id: order.id,
             Customer: order.customer?.name,
             Product: order.product?.name,
-            Preço: order.product?.saleValue,
+            'Valor da ordem': order.totalValue,
         }));
 
         const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
